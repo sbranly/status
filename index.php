@@ -5,6 +5,7 @@ function GetInfoLogData()
   $txt_file    = file_get_contents($logfile);
   $rows        = explode("\n", $txt_file);
   array_shift($rows);
+<<<<<<< HEAD
 
   //$rows = array_slice($rows, -5);
 
@@ -47,6 +48,33 @@ function GetInfoLogData()
           $infologrow .= "\t\t\t</tr>";
     }
     return $infologrow;
+=======
+  $infologrow = '';
+  
+  foreach($rows as $row => $data)
+  {
+      if ($row > $rows.length -6)
+      {
+        //get row data
+        $row_data = explode(',', $data);
+  
+        $info[$row]['lastrun']              = $row_data[0];
+        $info[$row]['opsviewquery']         = $row_data[1];
+        $info[$row]['awsquery']             = $row_data[2];
+        $info[$row]['opsviewpurge']         = $row_data[3];
+        $info[$row]['opsviewadd']           = $row_data[4];
+  
+        //display data
+        $infologrow .= "\n\t\t\t<tr>
+                  <td>". $info[$row]['lastrun']. "</td>
+                  <td>". $info[$row]['opsviewquery']. "</td>
+                  <td>". $info[$row]['awsquery']. "</td>
+                  <td>". $info[$row]['opsviewpurge']. "</td>
+                  <td>". $info[$row]['opsviewadd']. "</td>
+                  </td>";
+        $infologrow .= "\t\t\t</tr>";
+      }
+>>>>>>> origin/master
   }
 ?>
 
