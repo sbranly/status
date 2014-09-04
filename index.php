@@ -4,7 +4,8 @@ function GetInfoLogData()
   $txt_file    = file_get_contents('info.log');
   $rows        = explode("\n", $txt_file);
   array_shift($rows);
-
+  $infologrow = '';
+  
   foreach($rows as $row => $data)
   {
       //get row data
@@ -17,7 +18,7 @@ function GetInfoLogData()
       $info[$row]['opsviewadd']           = $row_data[4];
 
       //display data
-      $infologrow = "\n\t\t\t<tr>
+      $infologrow .= "\n\t\t\t<tr>
                 <td>". $info[$row]['lastrun']. "</td>
                 <td>". $info[$row]['opsviewquery']. "</td>
                 <td>". $info[$row]['awsquery']. "</td>
