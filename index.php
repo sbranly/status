@@ -13,20 +13,20 @@ function GetInfoLogData()
           //get row data
           $row_data = explode(',', $data);
 
-          $info[$row]['lastrun']              = $row_data[0];
-          $info[$row]['opsviewquery']         = $row_data[1];
-          $info[$row]['awsquery']             = $row_data[2];
-          $info[$row]['opsviewpurge']         = $row_data[3];
-          $info[$row]['opsviewadd']           = $row_data[4];
+          $info[$row]['lastrun']              = trim($row_data[0]);
+          $info[$row]['opsviewquery']         = trim($row_data[1]);
+          $info[$row]['awsquery']             = trim($row_data[2]);
+          $info[$row]['opsviewpurge']         = trim($row_data[3]);
+          $info[$row]['opsviewadd']           = trim($row_data[4]);
 
 
-          if ($info[$row]['opsviewquery'] == " FAILED" || $info[$row]['awsquery'] == " FAILED" || $info[$row]['opsviewpurge'] == " FAILED" || $info[$row]['opsviewadd'] == " FAILED")
+          if ($info[$row]['opsviewquery'] == "FAILED" || $info[$row]['awsquery'] == "FAILED" || $info[$row]['opsviewpurge'] == "FAILED" || $info[$row]['opsviewadd'] == "FAILED")
           {
-            $infologrow .= "\n\t\t\t<tr class=\"danger\" >\n";
+            $infologrow .= "\n\t\t\t<tr class=\"danger\" >";
           }
           else
           {
-            $infologrow .= "\n\t\t\t<tr>\n"
+            $infologrow .= "\n\t\t\t<tr>"
           }
           $infologrow .= "
                 <td>". $info[$row]['lastrun']. "</td>
