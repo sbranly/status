@@ -5,29 +5,33 @@ function GetInfoLogData()
   $rows        = explode("\n", $txt_file);
   array_shift($rows);
 
+  $rows = array_slice($rows, -5);
+
+  $infologrow = '';
+
   foreach($rows as $row => $data)
-  {
-      //get row data
-      $row_data = explode(',', $data);
+    {
+          //get row data
+          $row_data = explode(',', $data);
 
-      $info[$row]['lastrun']              = $row_data[0];
-      $info[$row]['opsviewquery']         = $row_data[1];
-      $info[$row]['awsquery']             = $row_data[2];
-      $info[$row]['opsviewpurge']         = $row_data[3];
-      $info[$row]['opsviewadd']           = $row_data[4];
+          $info[$row]['lastrun']              = $row_data[0];
+          $info[$row]['opsviewquery']         = $row_data[1];
+          $info[$row]['awsquery']             = $row_data[2];
+          $info[$row]['opsviewpurge']         = $row_data[3];
+          $info[$row]['opsviewadd']           = $row_data[4];
 
-      //display data
-      $infologrow = "\n\t\t\t<tr>
-                <td>". $info[$row]['lastrun']. "</td>
-                <td>". $info[$row]['opsviewquery']. "</td>
-                <td>". $info[$row]['awsquery']. "</td>
-                <td>". $info[$row]['opsviewpurge']. "</td>
-                <td>". $info[$row]['opsviewadd']. "</td>
-                </td>";
-      $infologrow .= "\t\t\t</tr>";
+          //display data
+          $infologrow .= "\n\t\t\t<tr>
+                    <td>". $info[$row]['lastrun']. "</td>
+                    <td>". $info[$row]['opsviewquery']. "</td>
+                    <td>". $info[$row]['awsquery']. "</td>
+                    <td>". $info[$row]['opsviewpurge']. "</td>
+                    <td>". $info[$row]['opsviewadd']. "</td>
+                    </td>";
+          $infologrow .= "\t\t\t</tr>";
+    }
+    return $infologrow;
   }
-  return $infologrow;
-}
 ?>
 <!DOCTYPE html>
 <html>
